@@ -23,7 +23,7 @@ namespace NZWalks.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var regions = await context.GetAll();
+            var regions = await context.GetAllAsync();
 
             #region Convert Domain to DTO using ForEach Loop
             //return DTO regions

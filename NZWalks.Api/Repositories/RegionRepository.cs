@@ -14,7 +14,7 @@ namespace NZWalks.Api.Repositories
             context = _context;
         }
 
-        async Task<IEnumerable<Region>> IRegionRepository.GetAll()
+        async Task<IEnumerable<Region>> IRegionRepository.GetAllAsync()
         {
             return await context.Regions.ToListAsync();
         }
