@@ -8,7 +8,7 @@
         public double Area { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public long POpulation { get; set; }
+        public long Population { get; set; }
 
         //navigation properties - connection of entities
         public IEnumerable<Walk> Walks { get; set; }
