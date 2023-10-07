@@ -13,6 +13,16 @@ namespace NZWalks.Api.Profilers
                 .ForMember(dest => dest.RegionName, options => options.MapFrom(src => src.Name))
                 .ForMember(des => des.RegionCode, options => options.MapFrom(src => src.Code))
                 .ReverseMap();
+
+            CreateMap<Region, AddRegionDTO>()
+                .ForMember(dest => dest.RegionName, options => options.MapFrom(src => src.Name))
+                .ForMember(dest => dest.RegionCode, options => options.MapFrom(src => src.Code))
+                .ReverseMap();
+
+            CreateMap<Region, UpdateRegionDTO>()
+                .ForMember(dest => dest.RegionName, options => options.MapFrom(src => src.Name))
+                .ForMember(dest => dest.RegionCode, options => options.MapFrom(src => src.Code))
+                .ReverseMap();
         }
     }
 }
