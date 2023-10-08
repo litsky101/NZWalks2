@@ -156,5 +156,14 @@ namespace NZWalks.Api.Controllers
                 return Ok(regionDTO);
             }   
         }
+
+        #region Private methods
+
+        private void ValidateAddRegionAsync()
+        {
+
+        }
+
+        #endregion
     }
 }

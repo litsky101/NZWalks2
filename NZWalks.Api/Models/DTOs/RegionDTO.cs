@@ -9,6 +9,7 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public long Population { get; set; }
+        public string RegionImageUrl { get; set; }
     }
 
     public class AddRegionDTO
@@ -19,6 +20,7 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public long Population { get; set; }
+        public string RegionImageUrl { get; set; }
     }
 
     public class UpdateRegionDTO
@@ -29,5 +31,6 @@
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public long Population { get; set; }
+        public string RegionImageUrl { get; set; }
     }
 }

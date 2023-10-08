@@ -7,6 +7,7 @@ namespace NZWalks.Api.Models.DTOs
         public Guid Id { get; set; }
         public string WalkName { get; set; }
         public double Length { get; set; }
+        public string ImageUrl { get; set; }
         public Guid RegionId { get; set; }
         public Guid WalkDifficultyId { get; set; }
 
@@ -20,6 +21,7 @@ namespace NZWalks.Api.Models.DTOs
         public Guid Id { get; set; }
         public string WalkName { get; set; }
         public double Length { get; set; }
+        public string ImageUrl { get; set; }
         public Guid RegionId { get; set; }
         public Guid WalkDifficultyId { get; set; }
     }
