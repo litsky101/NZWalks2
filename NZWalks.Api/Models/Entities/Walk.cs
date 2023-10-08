@@ -9,7 +9,7 @@
         public Guid WalkDifficultyId { get; set; }
 
         //navigation properties - connection of entities
-        public Region Regions { get; set; }
-        public WalkDifficulty WalkDifficulties { get; set; }
+        public Region Region { get; set; }
+        public WalkDifficulty WalkDifficulty { get; set; }
     }
 }

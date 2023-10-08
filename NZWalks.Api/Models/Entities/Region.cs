@@ -11,7 +11,7 @@
         public long Population { get; set; }
 
         //navigation properties - connection of entities
-        public IEnumerable<Walk> Walks { get; set; }
+        //public IEnumerable<Walk> Walk { get; set; }
 
     }
 }

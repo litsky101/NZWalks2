@@ -1,13 +1,17 @@
 using Microsoft.EntityFrameworkCore;
+using NZWalks.Api.Controllers;
 using NZWalks.Api.Data;
 using NZWalks.Api.Models.IRepositories;
 using NZWalks.Api.Repositories;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,6 +22,8 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 
 //#2 - Inject repositories
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddScoped<IWalkRepository, WalkRepository>();
+builder.Services.AddScoped<IWalkDifficultyRepository, WalkDifficultyRepository>();
 
 //#3 - Add AutoMapper profiles
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
