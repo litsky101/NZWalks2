@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NZWalks.Api.CustomActionFilters;
 using NZWalks.Api.Models.DTOs;
 using NZWalks.Api.Models.Entities;
 using NZWalks.Api.Models.IRepositories;
@@ -70,7 +71,8 @@ namespace NZWalks.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Save(RegionDTO regionDTO)
+        [ValidateModel]
+        public async Task<IActionResult> Save(AddRegionDTO regionDTO)
         {
             //Request(DTO) to domain model
             //var regionModel = new Region()
@@ -99,7 +101,8 @@ namespace NZWalks.Api.Controllers
                 Population = regionDTO.Population
             };
 
-            return CreatedAtAction(nameof(GetRegionAsync), new { id = regionDTO.Id }, newRegionDTO);     //httpstatus code: 201
+            return CreatedAtAction(nameof(GetRegionAsync), new { id = regionModel.Id }, newRegionDTO);     //httpstatus code: 201
+
         }
 
         [HttpDelete]
