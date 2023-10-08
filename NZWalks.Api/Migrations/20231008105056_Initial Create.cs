@@ -20,11 +20,11 @@ namespace NZWalks.Api.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Area = table.Column<double>(type: "float", nullable: false),
-                    Latitude = table.Column<double>(type: "float", nullable: false),
-                    Longitude = table.Column<double>(type: "float", nullable: false),
-                    Population = table.Column<long>(type: "bigint", nullable: false),
-                    RegionImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Area = table.Column<double>(type: "float", nullable: false, defaultValue: 0),
+                    Latitude = table.Column<double>(type: "float", nullable: false, defaultValue: 0),
+                    Longitude = table.Column<double>(type: "float", nullable: false, defaultValue: 0),
+                    Population = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0),
+                    RegionImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,7 +49,7 @@ namespace NZWalks.Api.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Length = table.Column<double>(type: "float", nullable: false),
+                    Length = table.Column<double>(type: "float", nullable: false, defaultValue: 0),
                     RegionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     WalkDifficultyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)

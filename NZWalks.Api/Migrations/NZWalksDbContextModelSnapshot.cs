@@ -49,7 +49,6 @@ namespace NZWalks.Api.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("RegionImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

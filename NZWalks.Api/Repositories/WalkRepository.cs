@@ -14,13 +14,43 @@ namespace NZWalks.Api.Repositories
             context = _context;
         }
 
-        public async Task<IEnumerable<Walk>> GetAllAsync()
+        public async Task<IEnumerable<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool isAscending = true,
+            int pageNumber = 1, int pageSize = 50)
         {
-            return await 
-                context.Walks
-                .Include(w => w.Region)
-                .Include(w => w.WalkDifficulty)
-                .ToListAsync();
+            //return await 
+            //    context.Walks
+            //    .Include(w => w.Region)
+            //    .Include(w => w.WalkDifficulty)
+            //    .ToListAsync();
+            var walks = context.Walks.Include("Region").Include("WalkDifficulty").AsQueryable();
+
+            //Filter
+            if(!string.IsNullOrEmpty(filterOn) && !string.IsNullOrEmpty(filterQuery))
+            {
+                if(filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = walks.Where(w => w.Name.Contains(filterQuery));
+                }
+                
+            }
+
+            //Sorting
+            if(!string.IsNullOrEmpty(sortBy))
+            {
+                if(sortBy.Equals("Name" , StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = isAscending ?  walks.OrderBy(w => w.Name) : walks.OrderByDescending(w => w.Name);
+                }
+                else if(sortBy.Equals ("Length" , StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = isAscending ? walks.OrderBy(w => w.Length) : walks.OrderByDescending(w => w.Length);
+                }
+            }
+
+            //Pagination
+            var skipResult = (pageNumber - 1) * pageSize;
+
+            return await walks.Skip(skipResult).Take(pageSize).ToListAsync();
         }
 
         public async Task<Walk> AddAsync(Walk walk)

@@ -12,7 +12,7 @@ using NZWalks.Api.Data;
 namespace NZWalks.Api.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    [Migration("20231008063053_Initial Create")]
+    [Migration("20231008105056_Initial Create")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,7 +52,6 @@ namespace NZWalks.Api.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("RegionImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
