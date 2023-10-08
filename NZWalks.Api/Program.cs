@@ -6,6 +6,9 @@ using NZWalks.Api.Repositories;
 using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Diagnostics;
+using NZWalks.Api.Middlewares;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +19,15 @@ builder.Services.AddHttpContextAccessor(); // provide url to image
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "NZWalks API",
+        Description = "ASP.NET Core Web API Tutorial"
+    });
+});
 
 //#1 Inject DbContext Class and get connectionstring in appsettings.json
 builder.Services.AddDbContext<NZWalksDbContext>(options =>
@@ -39,6 +50,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

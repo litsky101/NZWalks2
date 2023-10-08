@@ -31,6 +31,8 @@ namespace NZWalks.Api.Controllers
 
             var walksDto = mapper.Map<List<WalkDTO>>(walks);
 
+            throw new Exception("This is a new exception");
+
             return Ok(walksDto);
         }
 
